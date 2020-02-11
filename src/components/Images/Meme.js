@@ -132,14 +132,14 @@ class Meme extends React.Component {
         if (this.props.isMemeOn) {
             return (
                 <div className='Meme br2'> 
-                <div className='image'>
-                    <div className='tilt-inner'> 
-                    <img 
-                        style={{margin:'5px'}} 
-                        src={this.state.memeHome}
-                        alt=''
-                        onClick={() => this.fetchMeme()}
-                    />
+                    <div className='image'>
+                        <div className='tilt-inner'> 
+                        <img 
+                            style={{margin:'5px'}} 
+                            src={this.state.memeHome}
+                            alt=''
+                            onClick={() => this.fetchMeme()}
+                        />
                         </div>
                     </div>
                     <h4 className="text bg-light pa3 br2" id='memeText' onClick={() => this.fetchMeme()}>{"Click the image to add info or load more memes."} </h4>
@@ -149,7 +149,7 @@ class Meme extends React.Component {
             return (
                 <div className="text br-4"> <h4 className="bg-dark red pa2 ph3 pb3 br2" id='memeText' onClick={this.props.turnMemeOn}>{"Please sign in to add/remove photos"}
                     </h4>
-                    </div>
+                </div>
                 )
         } else {
             return (
