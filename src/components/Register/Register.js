@@ -93,7 +93,7 @@ class Register extends React.Component {
               <p 
                 onClick={() => this.props.onRouteChange('signIn')}
                 className="f6 hover-cadetblue black db pointer grow">
-                Sign In
+                {"Sign In"}
                 </p>
             </div>
             </div>
