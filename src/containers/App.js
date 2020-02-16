@@ -212,6 +212,51 @@ class App extends Component {
   render() {
       const { menu, imageUrl, route, isSignedIn, input, isMemeOn, submitWithoutEmail, icons, comments } = this.state;
       const { entries, username, email, uploadedPic, id } = this.state.user;
+      let mainPage = <main>
+      <ErrorBoundary>
+      <Icons
+          loadPhotos={this.loadPhotos}
+          username={username} 
+          entries={entries}
+          imageUrl={imageUrl}
+          email={email}
+          showIconPhoto={this.showIconPhoto}
+          isMemeOn={isMemeOn}
+          submitWithoutEmail={submitWithoutEmail}
+          icons={icons}
+      />
+      <Meme
+          turnMemeOn={this.turnMemeOn}
+          deleteImageUrl={this.deleteImageUrl}
+          isMemeOn={isMemeOn}
+          uploadedPic={uploadedPic}
+          imageUrl={imageUrl}
+          input={input}
+          email={email}
+          submitWithoutEmail={submitWithoutEmail}
+      />
+      <Comments
+          pushComments={this.pushComments}
+          username={username} 
+          imageUrl={imageUrl}
+          email={email}
+          id={id}
+          isMemeOn={isMemeOn}
+          comments={comments}
+      />
+      </ErrorBoundary>
+      </main>;
+
+    let signInPage = <SignIn  
+    loadUser={this.loadUser}
+    onRouteChange={this.onRouteChange}
+    loadPhotos={this.loadPhotos}
+    email={email}
+    />
+    let registerPage = <Register 
+    loadUser={this.loadUser} 
+    onRouteChange={this.onRouteChange}
+    />;
     return (
       <div className="App">
         <Navigation 
@@ -223,55 +268,16 @@ class App extends Component {
             isSignedIn={isSignedIn}
             showPhotoMenu={menu}
         />
-        { route === 'home'
-        ?   <main>
-            <ErrorBoundary>
-            <Icons
-                loadPhotos={this.loadPhotos}
-                username={username} 
-                entries={entries}
-                imageUrl={imageUrl}
-                email={email}
-                showIconPhoto={this.showIconPhoto}
-                isMemeOn={isMemeOn}
-                submitWithoutEmail={submitWithoutEmail}
-                icons={icons}
-            />
-            <Meme
-                turnMemeOn={this.turnMemeOn}
-                deleteImageUrl={this.deleteImageUrl}
-                isMemeOn={isMemeOn}
-                uploadedPic={uploadedPic}
-                imageUrl={imageUrl}
-                input={input}
-                email={email}
-                submitWithoutEmail={submitWithoutEmail}
-            />
-            <Comments
-                pushComments={this.pushComments}
-                username={username} 
-                imageUrl={imageUrl}
-                email={email}
-                id={id}
-                isMemeOn={isMemeOn}
-                comments={comments}
-            />
-            </ErrorBoundary>
-            </main>
-        : (
-        route === 'signIn'
-            ? <SignIn  
-                loadUser={this.loadUser}
-                onRouteChange={this.onRouteChange}
-                loadPhotos={this.loadPhotos}
-                email={email}
-                />
-            : <Register 
-                loadUser={this.loadUser} 
-                onRouteChange={this.onRouteChange}
-                />
-            )
-        }
+        {(function() {
+            switch (route) {
+            case 'home':
+                return mainPage;
+            case 'signIn':
+                return signInPage;
+            default:
+                return registerPage;
+            }
+        })()}
       </div>
     );
   }
