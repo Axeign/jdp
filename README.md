@@ -61,6 +61,8 @@ Foreach "dependancy" you need to type `npm install <dependancy name>`
 
 Afterwards `npm audit fix`, this allows you to fix the security issues of the packages/libraries which you have installed, since the npm install only installs the basic version
 
+(There is a quicker and better way of doing this, but its good practise and doesnt take so long)
+
 ## Configuration
 - if you choose to install things like extensions for your ide, thats cool, but it makes helping harder sometimes
 - its better if you have something like brackets or vsc or phpstorm, so I can see your issues in the ide directly to help
