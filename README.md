@@ -58,6 +58,7 @@ This allows you to use npm package manager
 ## Installing the packages
 In the command line (press the windows key and type cmd then enter) and then type `cd <your directory (folder) where the cloned files were saved into>` and press enter
 Foreach "dependancy" you need to type `npm install <dependancy name>`
+An easier way to install all at once is `npm install`
 
 Afterwards `npm audit fix`, this allows you to fix the security issues of the packages/libraries which you have installed, since the npm install only installs the basic version
 
